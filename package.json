@@ -1,0 +1,48 @@
+{
+  "name": "chandigarh-gatka-association-web",
+  "private": true,
+  "version": "0.1.0",
+  "author": "Saihajpreet Singh <saihajpreet.singh@gmail.com>",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/react": "^1.6.5",
+    "@primer/components": "^19.1.1",
+    "@primer/styled-octicons": "^10.0.0",
+    "gatsby": "^2.22.15",
+    "gatsby-plugin-manifest": "^2.4.9",
+    "gatsby-plugin-mdx": "^1.2.15",
+    "gatsby-plugin-react-helmet": "^3.3.2",
+    "gatsby-plugin-styled-components": "^3.3.4",
+    "gatsby-source-filesystem": "^2.3.8",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1"
+  },
+  "keywords": [
+    "gatsby",
+    "gatka",
+    "primer.styles"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color"
+  }
+}

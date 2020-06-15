@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "frontmatter",
+        "gatka",
+        "linebreak",
+        "parens"
+    ],
+    "files.autoSave": "onFocusChange",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+    },
+}

@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+    push:
+      branches: [master]
+
+jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+
+          - name: Use Node.js 12.x
+            uses: actions/setup-node@v1
+            with:
+              node-version: 12.x
+
+          - name: Restore npm cache
+            uses: actions/cache@v2
+            id: cache
+            with:
+              path: ./node_modules
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+                ${{ runner.os }}-node-
+
+          - name: Install dependencies
+            if: steps.cache.outputs.cache-hit != 'true'
+            run: npm i
+
+          - name: Run Linter
+            run: npm run lint
+
+          - name: Run Build
+            run: npm run build
+
+          - name: Deploy to GH Pages
+            uses: crazy-max/ghaction-github-pages@v2
+            with:
+              build_dir: public
+              committer: saihaj <saihaj@users.noreply.github.com>
+              author: saihaj <saihaj@users.noreply.github.com>
+              target_branch: gh-pages
+            env:
+              GH_PAT: ${{ secrets.deploy_access_token }}
