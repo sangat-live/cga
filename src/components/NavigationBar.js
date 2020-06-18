@@ -1,15 +1,51 @@
-import React from 'react'
-import { BorderBox, Flex, Text } from '@primer/components'
-
+import React, { useState } from 'react'
+import { BorderBox, Flex, Text, ButtonOutline } from '@primer/components'
+import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { func, bool } from 'prop-types'
 
-import { BlueColor } from '../lib/theme'
+import { BlueColor, OrangeColor } from '../lib/theme'
 import nav from '../lib/nav.yml'
+import Drawer from './Drawer'
 
 const GatsbyLink = styled( Link )`
   color: inherit;
   text-decoration: none;
+  &:hover {
+    color: ${OrangeColor};
+  }
+`
+
+const Button = styled( ButtonOutline )`
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+  border: 1px solid white;
+
+  &:focus {
+    border: 1px solid white;
+    box-shadow: none;
+    background-color: inherit;
+  }
+
+  &:hover {
+    background-color: ${OrangeColor};
+    color: ${BlueColor};
+    border: 1px solid ${OrangeColor};
+  }
+`
+
+const ActiveBorderBox = styled( BorderBox )`
+  &:hover {
+    background-color: ${OrangeColor};
+    color: ${BlueColor};
+}
+`
+
+const Brand = styled( Text )`
+  font-size: 2em;
+  font-weight: bold;
 `
 
 const NavItems = ( { items } ) => items.map( ( { title, url }, index ) => (
@@ -21,41 +57,121 @@ const NavItems = ( { items } ) => items.map( ( { title, url }, index ) => (
     borderColor="transparent"
     paddingLeft={[ 3, 3, 4 ]}
   >
-    <GatsbyLink key={title} to={url} style={{ color: 'inherit', display: 'block' }}>
-      <Text fontSize={3}>
-        {title}
-      </Text>
+
+    <GatsbyLink key={title} to={url}>
+      <Text fontSize={3}>{title}</Text>
     </GatsbyLink>
 
   </BorderBox>
 ) )
 
-const Navigation = () => (
-  <Flex
-    flexDirection="column"
-    height="100%"
-    style={{ overflow: 'auto', WebkitOverflowScrolling: 'touch' }}
-  >
+const NavDrawerItems = ( { items, onDismiss } ) => items.map( ( { title, url }, index ) => (
+  <GatsbyLink key={title} to={url} color="inherit" display="block" activeStyle={{ color: OrangeColor }} onClick={onDismiss}>
+    <ActiveBorderBox
+      key={title}
+      border={0}
+      borderRadius={0}
+      borderTop={index !== 0 ? 1 : 0}
+      borderColor="transparent"
+      borderBottomColor="white"
+      py={2}
+      pl={4}
+    >
 
-    <Flex flexDirection="column" flex="1 0 auto" color="white" bg={BlueColor}>
-      <BorderBox border={0} borderRadius={0} borderBottom={0} borderColor={BlueColor}>
+      <Text fontSize={4}>{title}</Text>
 
-        <Flex py={2} pl={[ 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
+    </ActiveBorderBox>
+  </GatsbyLink>
+) )
 
-          <GatsbyLink to="/">
-            <Text fontSize={5} fontWeight="bold">CGA</Text>
-          </GatsbyLink>
+const NavDrawer = ( { isOpen, onDismiss } ) => (
+  <Drawer isOpen={isOpen} onDismiss={onDismiss}>
+    <Flex
+      flexDirection="column"
+      height="100%"
+      bg={BlueColor}
+    >
 
-          <Flex flexDirection="row" pr={[ 2, 2, 6 ]}>
-            <NavItems items={nav} />
+      <Flex flexDirection="column" flex="1 0 auto">
+        <BorderBox border={0} borderRadius={0} borderBottom={1} borderColor="transparent" borderBottomColor="white">
+
+          <Flex py={3} pl={4} pr={3} alignItems="center" justifyContent="space-between">
+
+            <GatsbyLink to="/" color="inherit">
+              <Brand>CGA</Brand>
+            </GatsbyLink>
+
+            <Button aria-label="Close" onClick={onDismiss}>
+              <XIcon size={20} />
+            </Button>
+
           </Flex>
 
+        </BorderBox>
+
+        <Flex flexDirection="column">
+          <NavDrawerItems items={nav} onDismiss={onDismiss} />
         </Flex>
 
-      </BorderBox>
-    </Flex>
+      </Flex>
 
-  </Flex>
+    </Flex>
+  </Drawer>
 )
+
+NavDrawer.propTypes = {
+  isOpen: bool.isRequired,
+  onDismiss: func.isRequired,
+}
+
+const Navigation = () => {
+  const [ isNavDrawerOpen, setIsNavDrawerOpen ] = useState( false )
+  const closeDrawer = () => setIsNavDrawerOpen( false )
+
+  return (
+    <Flex
+      flexDirection="column"
+      height="100%"
+      style={{ overflow: 'auto' }}
+    >
+
+      <Flex flexDirection="column" flex="1 0 auto" color="white" bg={BlueColor}>
+        <BorderBox border={0} borderRadius={0} borderBottom={0} borderColor="transparent">
+
+          <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
+
+            <GatsbyLink to="/">
+              <Brand>CGA</Brand>
+            </GatsbyLink>
+
+            {/* Web */}
+            <Flex
+              display={[ 'none', null, null, 'flex' ]}
+              flexDirection="row"
+              pr={[ 2, 2, 6 ]}
+            >
+              <NavItems items={nav} />
+            </Flex>
+
+            {/* Mobile */}
+            <Flex display={[ 'flex', null, null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
+              <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
+                <ThreeBarsIcon size={22} />
+              </Button>
+            </Flex>
+
+          </Flex>
+
+          <NavDrawer
+            isOpen={isNavDrawerOpen}
+            onDismiss={closeDrawer}
+          />
+
+        </BorderBox>
+      </Flex>
+
+    </Flex>
+  )
+}
 
 export default Navigation
