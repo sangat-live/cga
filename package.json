@@ -9,6 +9,7 @@
     "@primer/components": "^19.1.1",
     "@primer/styled-octicons": "^10.0.0",
     "framer-motion": "^1.11.1",
+    "fuse.js": "^6.2.0",
     "gatsby": "^2.23.4",
     "gatsby-plugin-manifest": "^2.4.11",
     "gatsby-plugin-mdx": "^1.2.15",
