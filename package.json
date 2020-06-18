@@ -8,6 +8,7 @@
     "@mdx-js/react": "^1.6.5",
     "@primer/components": "^19.1.1",
     "@primer/styled-octicons": "^10.0.0",
+    "framer-motion": "^1.11.1",
     "gatsby": "^2.22.15",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-mdx": "^1.2.15",
@@ -19,6 +20,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-focus-on": "^3.4.1",
     "react-helmet": "^6.0.0",
     "styled-components": "^5.1.1"
   },
