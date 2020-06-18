@@ -3,7 +3,8 @@
         "frontmatter",
         "gatka",
         "linebreak",
-        "parens"
+        "parens",
+        "unclickable"
     ],
     "files.autoSave": "onFocusChange",
     "editor.codeActionsOnSave": {
