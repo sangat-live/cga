@@ -10,7 +10,7 @@
     "@primer/styled-octicons": "^10.0.0",
     "framer-motion": "^1.11.1",
     "gatsby": "^2.22.15",
-    "gatsby-plugin-manifest": "^2.4.9",
+    "gatsby-plugin-manifest": "^2.4.11",
     "gatsby-plugin-mdx": "^1.2.15",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-styled-components": "^3.3.4",
