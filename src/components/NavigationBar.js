@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import { BorderBox, Flex, Text, ButtonOutline } from '@primer/components'
+import React, { useState, useContext } from 'react'
+import { BorderBox, Flex, Text, ButtonOutline, themeGet } from '@primer/components'
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
 import { func, bool } from 'prop-types'
 
-import { BlueColor, OrangeColor } from '../lib/theme'
 import nav from '../lib/nav.yml'
 import Drawer from './Drawer'
 
@@ -13,7 +12,7 @@ const GatsbyLink = styled( Link )`
   color: inherit;
   text-decoration: none;
   &:hover {
-    color: ${OrangeColor};
+    color: ${themeGet( 'themeOrange' )};
   }
 `
 
@@ -30,16 +29,16 @@ const Button = styled( ButtonOutline )`
   }
 
   &:hover {
-    background-color: ${OrangeColor};
-    color: ${BlueColor};
-    border: 1px solid ${OrangeColor};
+    background-color: ${themeGet( 'themeOrange' )};
+    color: ${themeGet( 'themeBlue' )};
+    border: 1px solid ${themeGet( 'themeOrange' )};
   }
 `
 
 const ActiveBorderBox = styled( BorderBox )`
   &:hover {
-    background-color: ${OrangeColor};
-    color: ${BlueColor};
+    background-color: ${themeGet( 'themeOrange' )};
+    color: ${themeGet( 'themeBlue' )};
 }
 `
 
@@ -66,7 +65,14 @@ const NavItems = ( { items } ) => items.map( ( { title, url }, index ) => (
 ) )
 
 const NavDrawerItems = ( { items, onDismiss } ) => items.map( ( { title, url }, index ) => (
-  <GatsbyLink key={title} to={url} color="inherit" display="block" activeStyle={{ color: OrangeColor }} onClick={onDismiss}>
+  <GatsbyLink
+    key={title}
+    to={url}
+    color="inherit"
+    display="block"
+    activeStyle={{ color: themeGet( 'themeOrange' ) }}
+    onClick={onDismiss}
+  >
     <ActiveBorderBox
       key={title}
       border={0}
@@ -84,40 +90,44 @@ const NavDrawerItems = ( { items, onDismiss } ) => items.map( ( { title, url }, 
   </GatsbyLink>
 ) )
 
-const NavDrawer = ( { isOpen, onDismiss } ) => (
-  <Drawer isOpen={isOpen} onDismiss={onDismiss}>
-    <Flex
-      flexDirection="column"
-      height="100%"
-      bg={BlueColor}
-    >
+const NavDrawer = ( { isOpen, onDismiss } ) => {
+  const { themeBlue } = useContext( ThemeContext )
 
-      <Flex flexDirection="column" flex="1 0 auto">
-        <BorderBox border={0} borderRadius={0} borderBottom={1} borderColor="transparent" borderBottomColor="white">
+  return (
+    <Drawer isOpen={isOpen} onDismiss={onDismiss}>
+      <Flex
+        flexDirection="column"
+        height="100%"
+        bg={themeBlue}
+      >
 
-          <Flex py={3} pl={4} pr={3} alignItems="center" justifyContent="space-between">
+        <Flex flexDirection="column" flex="1 0 auto">
+          <BorderBox border={0} borderRadius={0} borderBottom={1} borderColor="transparent" borderBottomColor="white">
 
-            <GatsbyLink to="/" color="inherit">
-              <Brand>CGA</Brand>
-            </GatsbyLink>
+            <Flex py={3} pl={4} pr={3} alignItems="center" justifyContent="space-between">
 
-            <Button aria-label="Close" onClick={onDismiss}>
-              <XIcon size={20} />
-            </Button>
+              <GatsbyLink to="/" color="inherit">
+                <Brand>CGA</Brand>
+              </GatsbyLink>
 
+              <Button aria-label="Close" onClick={onDismiss}>
+                <XIcon size={20} />
+              </Button>
+
+            </Flex>
+
+          </BorderBox>
+
+          <Flex flexDirection="column">
+            <NavDrawerItems items={nav} onDismiss={onDismiss} />
           </Flex>
 
-        </BorderBox>
-
-        <Flex flexDirection="column">
-          <NavDrawerItems items={nav} onDismiss={onDismiss} />
         </Flex>
 
       </Flex>
-
-    </Flex>
-  </Drawer>
-)
+    </Drawer>
+  )
+}
 
 NavDrawer.propTypes = {
   isOpen: bool.isRequired,
@@ -125,6 +135,7 @@ NavDrawer.propTypes = {
 }
 
 const Navigation = () => {
+  const { themeBlue } = useContext( ThemeContext )
   const [ isNavDrawerOpen, setIsNavDrawerOpen ] = useState( false )
   const closeDrawer = () => setIsNavDrawerOpen( false )
 
@@ -135,7 +146,7 @@ const Navigation = () => {
       style={{ overflow: 'auto' }}
     >
 
-      <Flex flexDirection="column" flex="1 0 auto" color="white" bg={BlueColor}>
+      <Flex flexDirection="column" flex="1 0 auto" color="white" bg={themeBlue}>
         <BorderBox border={0} borderRadius={0} borderBottom={0} borderColor="transparent">
 
           <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
