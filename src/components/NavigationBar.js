@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { BorderBox, Flex, Text, ButtonOutline, themeGet } from '@primer/components'
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
 import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
 import { func, bool } from 'prop-types'
 
+import { useNavDrawerState } from '../hooks'
 import nav from '../lib/nav.yml'
 import Drawer from './Drawer'
 
@@ -135,8 +136,8 @@ NavDrawer.propTypes = {
 }
 
 const Navigation = () => {
-  const { themeBlue } = useContext( ThemeContext )
-  const [ isNavDrawerOpen, setIsNavDrawerOpen ] = useState( false )
+  const { themeBlue, breakpoints } = useContext( ThemeContext )
+  const [ isNavDrawerOpen, setIsNavDrawerOpen ] = useNavDrawerState( breakpoints[ 2 ] )
   const closeDrawer = () => setIsNavDrawerOpen( false )
 
   return (
