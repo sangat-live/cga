@@ -158,7 +158,7 @@ const Navigation = () => {
 
             {/* Web */}
             <Flex
-              display={[ 'none', null, null, 'flex' ]}
+              display={[ 'none', null, 'flex' ]}
               flexDirection="row"
               pr={[ 2, 2, 6 ]}
             >
@@ -166,7 +166,7 @@ const Navigation = () => {
             </Flex>
 
             {/* Mobile */}
-            <Flex display={[ 'flex', null, null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
+            <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
               <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
                 <ThreeBarsIcon size={22} />
               </Button>
