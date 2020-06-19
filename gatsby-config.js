@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/cga',
   siteMetadata: {
     title: 'Chandigarh Gatka Association',
     description: 'Chandigarh Gatka Association',
