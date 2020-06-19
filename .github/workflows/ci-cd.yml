@@ -41,5 +41,6 @@ jobs:
               committer: saihaj <saihaj@users.noreply.github.com>
               author: saihaj <saihaj@users.noreply.github.com>
               target_branch: gh-pages
+              fqdn: cga.sangat.live
             env:
               GH_PAT: ${{ secrets.deploy_access_token }}
