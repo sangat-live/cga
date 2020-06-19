@@ -10,9 +10,14 @@ const components = {
 
 const theme = {
   ...primer,
-  breakpoints: [ '544px', '768px', '1012px', '1280px', '1450px' ],
-  themeBlue: 'rgba( 0, 137, 250, 1 )',
-  themeOrange: 'rgba( 238, 153, 41, 1 )',
+  breakpoints: [ ...primer.breakpoints, '1450px' ],
+  colors: {
+    ...primer.colors,
+    theme: {
+      orange: 'rgba( 238, 153, 41, 1 )',
+      blue: 'rgba( 0, 137, 250, 1 )',
+    },
+  },
 }
 
 export const wrapRootElement = ( { element } ) => (
