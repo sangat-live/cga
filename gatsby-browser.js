@@ -10,6 +10,7 @@ const components = {
 
 const theme = {
   ...primer,
+  breakpoints: [ '544px', '768px', '1012px', '1280px', '1450px' ],
   themeBlue: 'rgba( 0, 137, 250, 1 )',
   themeOrange: 'rgba( 238, 153, 41, 1 )',
 }
