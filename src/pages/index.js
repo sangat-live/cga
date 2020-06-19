@@ -4,7 +4,7 @@ import { Heading } from '@primer/components'
 import Layout from '../components/Layout'
 
 const IndexPage = () => (
-  <Layout>
+  <Layout title="Home">
     <Heading>
       HOME PAGE
     </Heading>

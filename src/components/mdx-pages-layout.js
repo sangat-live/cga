@@ -5,12 +5,10 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { shape } from 'prop-types'
 
 import Layout from './Layout'
-import SEO from './seo'
 
 export default function PageTemplate( { data: { mdx } } ) {
   return (
-    <Layout>
-      <SEO title={mdx.frontmatter.title} />
+    <Layout title={mdx.frontmatter.title}>
       <MDXProvider>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
