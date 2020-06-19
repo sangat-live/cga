@@ -6,18 +6,22 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'mdx',
-        path: `${__dirname}/content`,
+        path: `${__dirname}/content/data`,
+
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/content/assets/images`,
+        path: `${__dirname}/content/images`,
       },
     },
     {
@@ -37,8 +41,5 @@ module.exports = {
         },
       },
     },
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
   ],
 }
