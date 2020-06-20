@@ -9,7 +9,7 @@ const Layout = ( { title, children, ...props } ) => (
   <BaseStyles>
     <SEO title={title} />
     <Navigation />
-    <Box my={60} mx={[ 45, 60, 120, 180, 200, 300 ]} {...props}>
+    <Box my={[ 20, 20, null, 40 ]} mx={[ 30, null, 90, 150, 250, 300 ]} {...props}>
       {children}
     </Box>
   </BaseStyles>
