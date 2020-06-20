@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { BorderBox, Flex, Text, ButtonOutline, themeGet } from '@primer/components'
+import { BorderBox, Flex, Text, ButtonOutline } from '@primer/components'
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
 import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
@@ -13,7 +13,7 @@ const GatsbyLink = styled( Link )`
   color: inherit;
   text-decoration: none;
   &:hover {
-    color: ${themeGet( 'colors.theme.orange' )};
+    color: ${( { theme: { colors } } ) => colors.theme.orange};
   }
 `
 
@@ -30,16 +30,16 @@ const Button = styled( ButtonOutline )`
   }
 
   &:hover {
-    background-color: ${themeGet( 'colors.theme.orange' )};
-    color: ${themeGet( 'colors.theme.blue' )};
-    border: 1px solid ${themeGet( 'colors.theme.orange' )};
+    background-color: ${( { theme: { colors } } ) => colors.theme.orange};
+    color: ${( { theme: { colors } } ) => colors.theme.blue};
+    border: 1px solid ${( { theme: { colors } } ) => colors.theme.orange};
   }
 `
 
 const ActiveBorderBox = styled( BorderBox )`
   &:hover {
-    background-color: ${themeGet( 'colors.theme.orange' )};
-    color: ${themeGet( 'colors.theme.blue' )};
+    background-color: ${( { theme: { colors } } ) => colors.theme.orange};
+    color: ${( { theme: { colors } } ) => colors.theme.blue};
 }
 `
 
