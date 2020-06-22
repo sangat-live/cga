@@ -12,16 +12,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'mdx',
-        path: `${__dirname}/content/data`,
-
+        name: 'content',
+        path: `${__dirname}/src/content`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/content/images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {
