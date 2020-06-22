@@ -28,7 +28,7 @@ const Button = styled( ButtonOutline )`
   }
 `
 
-const NewsTemplate = ( { data: { mdx: { body, frontmatter: { title, date } } } } ) => (
+const NewsTemplate = ( { data: { mdx: { body, frontmatter: { title } } } } ) => (
   <Layout title={title}>
 
     <h1>{title}</h1>
@@ -55,7 +55,6 @@ query GetNewsPage($id: String) {
     body
     frontmatter{
       title
-      date(formatString: "MMM DD, YYYY")
     }
   }
 }
