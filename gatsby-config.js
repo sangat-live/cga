@@ -9,7 +9,6 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -35,6 +34,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        root: __dirname,
         extensions: [ '.mdx', '.md' ],
         defaultLayouts: {
           default: require.resolve( './src/components/Layout.js' ),

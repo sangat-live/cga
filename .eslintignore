@@ -4,6 +4,3 @@ node_modules/*
 # Gatsby
 public/*
 .cache/*
-
-# Ignore the bootstra.386 js files
-src/assets/js/*
