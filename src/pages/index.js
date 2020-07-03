@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseStyles } from '@primer/components'
+import { BaseStyles, Flex } from '@primer/components'
 import { useStaticQuery, graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
@@ -14,7 +14,7 @@ const Overlay = styled.div`
 `
 
 const Heading = styled.div`
-  margin-top: 35vh;
+  padding-top: 40vh;
   text-align: center;
 `
 
@@ -25,7 +25,7 @@ const SiteName = styled.h1`
   line-height: normal;
 `
 
-const Moto = styled.p`
+const SiteMoto = styled.p`
   margin:0;
   font-weight: 300;
   font-style: italic;
@@ -47,24 +47,26 @@ const IndexPage = () => {
   ` )
 
   const scrollY = useScrollPosition( 60 )
-  const navBarColor = scrollY > 100 ? 'theme.blue' : 'transparent'
+  const navBarColor = scrollY > 150 ? 'theme.blue' : 'transparent'
 
   return (
     <BaseStyles>
-      <BackgroundImage fluid={fluid} style={{ height: '100vh' }}>
 
-        <Overlay>
+      <Navigation bgColorNav={navBarColor} />
 
-          <Navigation bgColorNav={navBarColor} />
+      <div style={{ height: '102vh', marginTop: '-80px' }}>
+        <BackgroundImage fluid={fluid} style={{ height: '100%' }}>
 
-          <Heading>
-            <SiteName>Chandigarh Gatka Association</SiteName>
-            <Moto>Let&rsquo;s Play Gatka</Moto>
-          </Heading>
+          <Overlay>
+            <Heading>
+              <SiteName>Chandigarh Gatka Association</SiteName>
+              <SiteMoto>Let&rsquo;s Play Gatka</SiteMoto>
+            </Heading>
+          </Overlay>
 
-        </Overlay>
+        </BackgroundImage>
+      </div>
 
-      </BackgroundImage>
     </BaseStyles>
   )
 }
