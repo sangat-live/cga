@@ -3,7 +3,7 @@ import { BorderBox, Flex, Text, ButtonOutline, Sticky } from '@primer/components
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
 import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
-import { func, bool } from 'prop-types'
+import { func, bool, string } from 'prop-types'
 
 import { useNavDrawerState } from '../hooks'
 import nav from '../lib/nav.yml'
@@ -130,7 +130,7 @@ NavDrawer.propTypes = {
   onDismiss: func.isRequired,
 }
 
-const Navigation = () => {
+const Navigation = ( { bgColorNav } ) => {
   const { breakpoints } = useContext( ThemeContext )
   const [ isNavDrawerOpen, setIsNavDrawerOpen ] = useNavDrawerState( breakpoints[ 2 ] )
   const closeDrawer = () => setIsNavDrawerOpen( false )
@@ -145,7 +145,7 @@ const Navigation = () => {
       >
 
         <Flex flexDirection="column" flex="1 0 auto" color="white">
-          <BorderBox border={0} borderRadius={0} borderBottom={0} bg="theme.blue" borderColor="transparent">
+          <BorderBox border={0} borderRadius={0} borderBottom={0} bg={bgColorNav} borderColor="transparent">
 
             <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
 
@@ -183,6 +183,14 @@ const Navigation = () => {
 
     </Sticky>
   )
+}
+
+Navigation.propTypes = {
+  bgColorNav: string,
+}
+
+Navigation.defaultProps = {
+  bgColorNav: 'theme.blue',
 }
 
 export default Navigation
