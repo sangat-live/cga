@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { BorderBox, Flex, Text, ButtonOutline } from '@primer/components'
+import { BorderBox, Flex, Text, ButtonOutline, Sticky } from '@primer/components'
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
 import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
@@ -136,48 +136,52 @@ const Navigation = () => {
   const closeDrawer = () => setIsNavDrawerOpen( false )
 
   return (
-    <Flex
-      flexDirection="column"
-      height="100%"
-      style={{ overflow: 'auto' }}
-    >
+    <Sticky>
 
-      <Flex flexDirection="column" flex="1 0 auto" color="white" bg="theme.blue">
-        <BorderBox border={0} borderRadius={0} borderBottom={0} borderColor="transparent">
+      <Flex
+        flexDirection="column"
+        height="100%"
+        style={{ overflow: 'auto' }}
+      >
 
-          <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
+        <Flex flexDirection="column" flex="1 0 auto" color="white">
+          <BorderBox border={0} borderRadius={0} borderBottom={0} bg="theme.blue" borderColor="transparent">
 
-            <GatsbyLink to="/">
-              <Brand>CGA</Brand>
-            </GatsbyLink>
+            <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
 
-            {/* Web */}
-            <Flex
-              display={[ 'none', null, 'flex' ]}
-              flexDirection="row"
-              pr={[ 2, 2, 6 ]}
-            >
-              <NavItems items={nav} />
+              <GatsbyLink to="/">
+                <Brand>CGA</Brand>
+              </GatsbyLink>
+
+              {/* Web */}
+              <Flex
+                display={[ 'none', null, 'flex' ]}
+                flexDirection="row"
+                pr={[ 2, 2, 6 ]}
+              >
+                <NavItems items={nav} />
+              </Flex>
+
+              {/* Mobile */}
+              <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
+                <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
+                  <ThreeBarsIcon size={22} />
+                </Button>
+              </Flex>
+
             </Flex>
 
-            {/* Mobile */}
-            <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
-              <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
-                <ThreeBarsIcon size={22} />
-              </Button>
-            </Flex>
+            <NavDrawer
+              isOpen={isNavDrawerOpen}
+              onDismiss={closeDrawer}
+            />
 
-          </Flex>
+          </BorderBox>
+        </Flex>
 
-          <NavDrawer
-            isOpen={isNavDrawerOpen}
-            onDismiss={closeDrawer}
-          />
-
-        </BorderBox>
       </Flex>
 
-    </Flex>
+    </Sticky>
   )
 }
 
