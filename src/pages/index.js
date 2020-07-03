@@ -1,10 +1,10 @@
 import React from 'react'
-import { Heading } from '@primer/components'
+import { Heading, BaseStyles } from '@primer/components'
 import { useStaticQuery, graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
 
-import Layout from '../components/Layout'
+import Navigation from '../components/NavigationBar'
 
 const BG = styled( BackgroundImage )`
   width:100%;
@@ -14,10 +14,8 @@ const BG = styled( BackgroundImage )`
 `
 
 const Overlay = styled.div`
-  display: flex;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  align-items: center;
+  background-color: rgba(0,0,0,0.6);
   color: white;
 `
 
@@ -36,16 +34,16 @@ const IndexPage = () => {
   ` )
 
   return (
-    <Layout title="Home">
+    <BaseStyles>
       <BG fluid={fluid}>
         <Overlay>
+          <Navigation />
           <Heading>
             HOME PAGE
           </Heading>
         </Overlay>
       </BG>
-    </Layout>
-
+    </BaseStyles>
   )
 }
 export default IndexPage
