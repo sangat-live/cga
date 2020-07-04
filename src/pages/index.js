@@ -35,7 +35,7 @@ const SiteMoto = styled.p`
 const IndexPage = () => {
   const { file: { childImageSharp: { fluid } } } = useStaticQuery( graphql`
     query GetBgImageHome {
-      file(sourceInstanceName: {eq: "images"}, name: {eq: "test"}) {
+      file(sourceInstanceName: {eq: "images"}, name: {eq: "home"}) {
         childImageSharp {
           id
           fluid {
