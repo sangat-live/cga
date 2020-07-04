@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { BorderBox, Flex, Text, ButtonOutline, Sticky } from '@primer/components'
 import { ThreeBarsIcon, XIcon } from '@primer/styled-octicons'
+import { AnimatePresence, motion } from 'framer-motion'
 import styled, { ThemeContext } from 'styled-components'
 import { Link } from 'gatsby'
 import { func, bool, string } from 'prop-types'
@@ -47,7 +48,6 @@ const Brand = styled( Text )`
   font-size: 2em;
   font-weight: bold;
 `
-
 const NavItems = ( { items } ) => items.map( ( { title, url }, index ) => (
   <BorderBox
     key={title}
@@ -59,7 +59,17 @@ const NavItems = ( { items } ) => items.map( ( { title, url }, index ) => (
   >
 
     <GatsbyLink key={title} to={url}>
-      <Text fontSize={3}>{title}</Text>
+
+      <Text
+        key={title}
+        as={motion.div}
+        dragConstraints={{ left: -100, right: 100 }}
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
+        fontSize={3}
+      >
+        {title}
+      </Text>
     </GatsbyLink>
 
   </BorderBox>
@@ -137,50 +147,58 @@ const Navigation = ( { bgColorNav } ) => {
 
   return (
     <Sticky>
+      <AnimatePresence>
+        <Flex
+          flexDirection="column"
+          height="100%"
+          style={{ overflow: 'auto' }}
+        >
 
-      <Flex
-        flexDirection="column"
-        height="100%"
-        style={{ overflow: 'auto' }}
-      >
+          <Flex flexDirection="column" flex="1 0 auto" color="white">
+            <BorderBox border={0} borderRadius={0} borderBottom={0} bg={bgColorNav} borderColor="transparent">
 
-        <Flex flexDirection="column" flex="1 0 auto" color="white">
-          <BorderBox border={0} borderRadius={0} borderBottom={0} bg={bgColorNav} borderColor="transparent">
+              <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
 
-            <Flex py={2} pl={[ 4, 4, 4, 6 ]} pr={3} alignItems="center" justifyContent="space-between">
+                <GatsbyLink to="/">
+                  <Brand
+                    key="brandLink"
+                    as={motion.div}
+                    dragConstraints={{ left: -100, right: 100 }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    CGA
+                  </Brand>
+                </GatsbyLink>
 
-              <GatsbyLink to="/">
-                <Brand>CGA</Brand>
-              </GatsbyLink>
+                {/* Web */}
+                <Flex
+                  display={[ 'none', null, 'flex' ]}
+                  flexDirection="row"
+                  pr={[ 2, 2, 6 ]}
+                >
+                  <NavItems items={nav} />
+                </Flex>
 
-              {/* Web */}
-              <Flex
-                display={[ 'none', null, 'flex' ]}
-                flexDirection="row"
-                pr={[ 2, 2, 6 ]}
-              >
-                <NavItems items={nav} />
+                {/* Mobile */}
+                <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
+                  <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
+                    <ThreeBarsIcon size={22} />
+                  </Button>
+                </Flex>
+
               </Flex>
 
-              {/* Mobile */}
-              <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
-                <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
-                  <ThreeBarsIcon size={22} />
-                </Button>
-              </Flex>
+              <NavDrawer
+                isOpen={isNavDrawerOpen}
+                onDismiss={closeDrawer}
+              />
 
-            </Flex>
+            </BorderBox>
+          </Flex>
 
-            <NavDrawer
-              isOpen={isNavDrawerOpen}
-              onDismiss={closeDrawer}
-            />
-
-          </BorderBox>
         </Flex>
-
-      </Flex>
-
+      </AnimatePresence>
     </Sticky>
   )
 }
