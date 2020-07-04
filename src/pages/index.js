@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseStyles, Flex } from '@primer/components'
+import { BaseStyles } from '@primer/components'
 import { useStaticQuery, graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
@@ -54,7 +54,7 @@ const IndexPage = () => {
 
       <Navigation bgColorNav={navBarColor} />
 
-      <div style={{ height: '102vh', marginTop: '-80px' }}>
+      <div style={{ height: '101.4vh', marginTop: '-80px' }}>
         <BackgroundImage fluid={fluid} style={{ height: '100%' }}>
 
           <Overlay>
