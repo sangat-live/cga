@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Chandigarh Gatka Association',
     description: 'Chandigarh Gatka Association',
+    motto: 'Let\'s Play Gatka',
     author: '@saihaj',
   },
   plugins: [
