@@ -11,7 +11,7 @@ const GatsbyLink = styled( Link )`
   text-decoration: none;
 `
 
-const NewsBorderBox = styled( BorderBox )`
+export const NewsBorderBox = styled( BorderBox )`
   border-color: ${( { theme: { colors } } ) => colors.theme.blue};
   box-shadow: 0 0 3px 1px ${( { theme: { colors } } ) => changeColorAlpha( colors.theme.blue, 0.2 )};
 

@@ -18,3 +18,11 @@ export const changeColorAlpha = ( color, alpha ) => {
   const { r, g, b } = getColorObject( color )
   return `rgba(${r},${g},${b},${alpha})`
 }
+
+/**
+ * Remove digits from a string
+ * @param {String} input
+ * @returns Input without digits
+ * https://stackoverflow.com/a/4993780/11321732
+ */
+export const RemoveNum = input => input.replace( /\d+/g, '' )
