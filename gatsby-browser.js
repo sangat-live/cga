@@ -1,10 +1,15 @@
 import React from 'react'
 import { theme as primer, Link } from '@primer/components'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
+
 import { element } from 'prop-types'
 
+const SectionP = styled.p`
+  font-size: 1.2rem;
+`
 const components = {
+  p: SectionP,
   a: Link,
 }
 

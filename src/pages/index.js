@@ -35,10 +35,6 @@ const SiteMotto = styled.p`
   font-size: 1.2rem;
 `
 
-const SectionP = styled.p`
-  font-size: 1.2rem;
-`
-
 const IndexPage = () => {
   const {
     file: { childImageSharp: { fluid } },
@@ -87,14 +83,13 @@ const IndexPage = () => {
         paddingY="10vh"
       >
         <SiteName>What we do</SiteName>
-        <SectionP>
-          <MDXRenderer>
-            {whatWeDoBody}
-          </MDXRenderer>
-        </SectionP>
+        <MDXRenderer>
+          {whatWeDoBody}
+        </MDXRenderer>
       </Box>
 
     </BaseStyles>
   )
 }
+
 export default IndexPage
