@@ -1,10 +1,12 @@
 import React from 'react'
-import { BaseStyles } from '@primer/components'
+import { BaseStyles, Box } from '@primer/components'
 import { useStaticQuery, graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
 import useScrollPosition from '@react-hook/window-scroll'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
+import { useSiteMetadata } from '../hooks'
 import Navigation from '../components/NavigationBar'
 
 const Overlay = styled.div`
@@ -19,22 +21,30 @@ const Heading = styled.div`
 `
 
 const SiteName = styled.h1`
+  text-align: center;
   margin: 0 0 4px 0;
   font-size: 2.7rem;
   font-weight: 800;
   line-height: normal;
 `
 
-const SiteMoto = styled.p`
+const SiteMotto = styled.p`
   margin:0;
   font-weight: 300;
   font-style: italic;
   font-size: 1.2rem;
 `
 
+const SectionP = styled.p`
+  font-size: 1.2rem;
+`
+
 const IndexPage = () => {
-  const { file: { childImageSharp: { fluid } } } = useStaticQuery( graphql`
-    query GetBgImageHome {
+  const {
+    file: { childImageSharp: { fluid } },
+    mdx: { body: whatWeDoBody },
+  } = useStaticQuery( graphql`
+    query GetHomePage {
       file(sourceInstanceName: {eq: "images"}, name: {eq: "home"}) {
         childImageSharp {
           id
@@ -43,8 +53,13 @@ const IndexPage = () => {
           }
         }
       }
+      mdx(frontmatter: {title: {eq: "What we do"}}) {
+        body
+      }
     }
   ` )
+
+  const { title: siteTitle, motto } = useSiteMetadata()
 
   const scrollY = useScrollPosition( 60 )
   const navBarColor = scrollY > 150 ? 'theme.blue' : 'transparent'
@@ -59,13 +74,25 @@ const IndexPage = () => {
 
           <Overlay>
             <Heading>
-              <SiteName>Chandigarh Gatka Association</SiteName>
-              <SiteMoto>Let&rsquo;s Play Gatka</SiteMoto>
+              <SiteName>{siteTitle}</SiteName>
+              <SiteMotto>{motto}</SiteMotto>
             </Heading>
           </Overlay>
 
         </BackgroundImage>
       </div>
+
+      <Box
+        mx={[ 30, null, 90, 150, 250, 300 ]}
+        paddingY="10vh"
+      >
+        <SiteName>What we do</SiteName>
+        <SectionP>
+          <MDXRenderer>
+            {whatWeDoBody}
+          </MDXRenderer>
+        </SectionP>
+      </Box>
 
     </BaseStyles>
   )

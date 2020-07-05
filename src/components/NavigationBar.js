@@ -182,7 +182,10 @@ const Navigation = ( { bgColorNav } ) => {
 
                 {/* Mobile */}
                 <Flex display={[ 'flex', null, 'none' ]} paddingRight={[ 2, 4, 4, 4 ]}>
-                  <Button aria-expanded={isNavDrawerOpen} onClick={() => setIsNavDrawerOpen( true )}>
+                  <Button
+                    aria-expanded={isNavDrawerOpen}
+                    onClick={() => setIsNavDrawerOpen( true )}
+                  >
                     <ThreeBarsIcon size={22} />
                   </Button>
                 </Flex>
