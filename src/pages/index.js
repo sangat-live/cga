@@ -8,6 +8,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { useSiteMetadata } from '../hooks'
 import Navigation from '../components/NavigationBar'
+import Footer from '../components/Footer'
+import SEO from '../components/seo'
 
 const Overlay = styled.div`
   height: 100%;
@@ -63,6 +65,8 @@ const IndexPage = () => {
   return (
     <BaseStyles>
 
+      <SEO title="Home" />
+
       <Navigation bgColorNav={navBarColor} />
 
       <div style={{ height: '101.4vh', marginTop: '-80px' }}>
@@ -87,7 +91,7 @@ const IndexPage = () => {
           {whatWeDoBody}
         </MDXRenderer>
       </Box>
-
+      <Footer />
     </BaseStyles>
   )
 }
