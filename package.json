@@ -9,6 +9,7 @@
     "@primer/components": "^19.1.1",
     "@primer/styled-octicons": "^10.0.0",
     "@react-hook/window-scroll": "^1.3.0",
+    "formik": "^2.1.4",
     "framer-motion": "^1.11.1",
     "fuse.js": "^6.4.0",
     "gatsby": "^2.23.11",
@@ -30,7 +31,8 @@
     "react-dom": "^16.12.0",
     "react-focus-on": "^3.4.1",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.4.0",
