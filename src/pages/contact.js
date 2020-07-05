@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { TextInput, Button, Flex, Flash, StyledOcticon, Box } from '@primer/components'
-import { Check, X } from '@primer/octicons-react'
+import { CheckIcon, XIcon } from '@primer/octicons-react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -74,7 +74,7 @@ const Contact = () => {
     if ( !formSubmit ) {
       return (
         <Flex as="form" onSubmit={formik.handleSubmit} flexDirection="column">
-          {contactFormOptions.map( ( { id, placeholder, name, asType, controlId } ) => (
+          {contactFormOptions.map( ( { id, placeholder, name, asType } ) => (
             <div key={id}>
               <TextInput
                 name={name}
@@ -96,7 +96,7 @@ const Contact = () => {
                   px={3}
                   variant="danger"
                 >
-                  <StyledOcticon icon={X} />
+                  <StyledOcticon icon={XIcon} />
                   {formik.errors[ id ]}
                 </Flash>
               ) : null}
@@ -119,7 +119,7 @@ const Contact = () => {
     if ( submissionSuccess ) {
       return (
         <Flash as="h3" py={4} px={4} variant="success">
-          <StyledOcticon icon={Check} size={22} />
+          <StyledOcticon icon={CheckIcon} size={22} />
           We will get back to you soon!
         </Flash>
       )
@@ -128,7 +128,7 @@ const Contact = () => {
     // Failed to send response
     return (
       <Flash as="h3" py={4} px={4} variant="danger">
-        <StyledOcticon icon={X} size={22} />
+        <StyledOcticon icon={XIcon} size={22} />
         There was an error. Please try again!!!
       </Flash>
     )
