@@ -1,5 +1,5 @@
 import React from 'react'
-import { theme as primer, Link } from '@primer/components'
+import { theme as primer, Link, BaseStyles } from '@primer/components'
 import styled, { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 
@@ -28,7 +28,9 @@ const theme = {
 export const wrapRootElement = ( { element } ) => (
   <MDXProvider components={components}>
     <ThemeProvider theme={theme}>
-      {element}
+      <BaseStyles>
+        {element}
+      </BaseStyles>
     </ThemeProvider>
   </MDXProvider>
 )
