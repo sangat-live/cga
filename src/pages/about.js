@@ -29,31 +29,24 @@ const About = () => {
     org: allFile(
       filter: {sourceInstanceName: {eq: "images"}, relativeDirectory:{eq:"team/org"}},
       sort: {fields: name}
-      ){
-      edges {
-        node {
-          name
-          childImageSharp {
-            id
-            fixed(height:400, width:300){
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
+      ) {
+      ...ImageCard
     }
     coaches: allFile(
       filter: {sourceInstanceName: {eq: "images"}, relativeDirectory:{eq:"team/coaches"}},
       sort: {fields: name}
       ) {
-      edges {
-        node {
-          name
-          childImageSharp {
-            id
-            fixed(height:400, width:300){
-              ...GatsbyImageSharpFixed
-            }
+      ...ImageCard
+      }
+  }
+  fragment ImageCard on FileConnection {
+    edges {
+      node {
+        name
+        childImageSharp {
+          id
+          fixed(height:400, width:300) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
