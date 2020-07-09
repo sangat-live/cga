@@ -46,7 +46,8 @@ const NewsContent = styled.p`
 
   /* Hide on small screens */
   @media(max-width: ${( { theme: { breakpoints: [ small ] } } ) => small}){
-    display: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
   }
 `
 
