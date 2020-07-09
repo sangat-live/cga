@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { Text } from '@primer/components'
@@ -55,13 +55,11 @@ const About = () => {
   }
 ` )
 
-  const bodImageRef = useRef( null )
-  const coachImageRef = useRef( null )
   return (
     <Layout title="About">
 
       <Text as="h1">Board of Directors</Text>
-      <AnimatedSlider constraint={bodImageRef}>
+      <AnimatedSlider widthConstraint={-190}>
 
         {org.edges.map( ( {
           node: {
@@ -78,7 +76,7 @@ const About = () => {
       </AnimatedSlider>
 
       <Text as="h1">Coaches</Text>
-      <AnimatedSlider constraint={coachImageRef}>
+      <AnimatedSlider widthConstraint={-190}>
         {coaches.edges.map( ( {
           node: {
             childImageSharp: { id, fixed },
