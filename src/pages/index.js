@@ -46,7 +46,7 @@ const IndexPage = () => {
       file(sourceInstanceName: {eq: "images"}, name: {eq: "home"}) {
         childImageSharp {
           id
-          fluid(maxWidth: 2400) {
+          fluid(maxWidth: 2400, quality:100) {
             ...GatsbyImageSharpFluid
           }
         }
