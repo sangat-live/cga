@@ -1,0 +1,41 @@
+backend:
+    name: github
+    repo: sangat-live/cga
+    branch: master
+    commit_messages:
+      create: "feat(content): create {{slug}}"
+      update: "feat(content): update {{slug}}"
+      delete: |+
+        feat(content): delete {{slug}}
+
+        BREAKING CHANGE
+      uploadMedia: "feat(media): upload {{path}}"
+      deleteMedia: |+
+        feat(media): delete {{path}}
+
+        BREAKING CHANGE
+
+media_folder: static/images
+
+collections:
+
+  - name: home-page-sections
+    label: Home Page Sections
+    files:
+      - file: src/content/whatWeDo.mdx
+        label: What We Do
+        name: what-we-do
+        fields:
+          - { label: Body, name: body, widget: markdown }
+
+  - name: news
+    label: News
+    folder: src/content/news
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: Template Key, name: templateKey, widget: hidden, default: news-layout }
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Body, name: body, widget: markdown }
