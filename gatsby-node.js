@@ -1,12 +1,18 @@
 const { createFilePath } = require( 'gatsby-source-filesystem' )
 const path = require( 'path' )
+const slugify = require( 'slugify' )
 
 // Add slug for each mdx file in 'content'
 exports.onCreateNode = ( { node, actions, getNode } ) => {
   const { createNodeField } = actions
 
   if ( node.internal.type === 'Mdx' ) {
-    const slug = createFilePath( { node, getNode } )
+    const slug = slugify(
+      createFilePath( { node, getNode } ), {
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      },
+    )
     createNodeField( { node, value: slug, name: 'slug' } )
   }
 }

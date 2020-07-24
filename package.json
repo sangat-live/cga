@@ -33,6 +33,7 @@
     "react-focus-on": "^3.4.1",
     "react-helmet": "^6.1.0",
     "react-indiana-drag-scroll": "^1.6.1",
+    "slugify": "^1.4.4",
     "styled-components": "^5.1.1",
     "title": "^3.4.2",
     "yup": "^0.29.1"
