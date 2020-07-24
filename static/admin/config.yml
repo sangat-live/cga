@@ -2,6 +2,7 @@ backend:
     name: github
     repo: sangat-live/cga
     branch: master
+    open_authoring: true
     commit_messages:
       create: "feat(content): create {{slug}}"
       update: "feat(content): update {{slug}}"
@@ -16,6 +17,7 @@ backend:
         BREAKING CHANGE
 
 media_folder: static/images
+publish_mode: editorial_workflow
 
 collections:
 
