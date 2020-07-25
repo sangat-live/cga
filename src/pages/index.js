@@ -47,7 +47,7 @@ const IndexPage = () => {
         childImageSharp {
           id
           fluid(maxWidth: 2400, quality:100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

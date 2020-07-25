@@ -47,7 +47,7 @@ const About = () => {
         childImageSharp {
           id
           fixed(height:400, width:300, quality:100) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
