@@ -6,7 +6,7 @@ import { node, number } from 'prop-types'
 
 const CustomCursor = styled.div`
  &:hover {
-  cursor: grab;
+  cursor: url('https://raw.githubusercontent.com/sangat-live/cga/dev/static/images/cursor.png') 39 39, auto;
  }
 `
 
