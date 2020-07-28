@@ -4,6 +4,7 @@ import { CheckIcon, XIcon } from '@primer/octicons-react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { CONTACT_PAGE_KEYWORDS } from '../lib/keywords'
 import Layout from '../components/Layout'
 
 const contactFormOptions = [
@@ -135,7 +136,7 @@ const Contact = () => {
   }
 
   return (
-    <Layout title="Contact" mx="auto" px={[ 2, 4 ]}>
+    <Layout title="Contact" mx="auto" px={[ 2, 4 ]} keywords={CONTACT_PAGE_KEYWORDS}>
       <Box as="h3" mb={6} mt={[ -2, 2 ]} style={{ fontWeight: 500 }}>
         Want to get in touch? Fill out the form below to send us a
         message and we will get back to you!

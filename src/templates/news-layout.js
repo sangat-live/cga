@@ -6,6 +6,7 @@ import { Flex, ButtonOutline } from '@primer/components'
 import { ArrowLeftIcon } from '@primer/styled-octicons'
 import styled from 'styled-components'
 
+import { BASE_KEYWORDS } from '../lib/keywords'
 import Layout from '../components/Layout'
 
 const Button = styled( ButtonOutline )`
@@ -28,8 +29,8 @@ const Button = styled( ButtonOutline )`
   }
 `
 
-const NewsTemplate = ( { data: { mdx: { body, frontmatter: { title } } } } ) => (
-  <Layout title={title}>
+const NewsTemplate = ( { data: { mdx: { body, frontmatter: { title, keywords } } } } ) => (
+  <Layout title={title} keywords={[ ...BASE_KEYWORDS, keywords ]}>
 
     <h1>{title}</h1>
 
@@ -55,6 +56,7 @@ query GetNewsPage($id: String) {
     body
     frontmatter{
       title
+      keywords
     }
   }
 }

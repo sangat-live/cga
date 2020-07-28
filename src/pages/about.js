@@ -5,6 +5,7 @@ import { Text } from '@primer/components'
 import { shape, string } from 'prop-types'
 import title from 'title'
 
+import { ABOUT_PAGE_KEYWORDS } from '../lib/keywords'
 import Layout from '../components/Layout'
 import { NewsBorderBox as ImageBox } from '../components/NewsBox'
 import { RemoveNum } from '../lib/utils'
@@ -56,7 +57,7 @@ const About = () => {
 ` )
 
   return (
-    <Layout title="About">
+    <Layout title="About" keywords={ABOUT_PAGE_KEYWORDS}>
 
       <Text as="h1">Board of Directors</Text>
       <AnimatedSlider widthConstraint={-190}>

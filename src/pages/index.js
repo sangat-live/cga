@@ -7,6 +7,7 @@ import useScrollPosition from '@react-hook/window-scroll'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { useSiteMetadata } from '../hooks'
+import { HOME_PAGE_KEYWORDS } from '../lib/keywords'
 import Navigation from '../components/NavigationBar'
 import Footer from '../components/Footer'
 import SEO from '../components/seo'
@@ -65,7 +66,7 @@ const IndexPage = () => {
   return (
     <BaseStyles>
 
-      <SEO title="Home" />
+      <SEO title="Home" keywords={HOME_PAGE_KEYWORDS} />
 
       <Navigation bgColorNav={navBarColor} />
 
