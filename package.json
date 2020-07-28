@@ -27,7 +27,6 @@
     "gatsby-transformer-sharp": "^2.5.11",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
-    "netlify-cms": "^2.10.55",
     "netlify-cms-app": "^2.12.19",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
