@@ -136,7 +136,7 @@ const Contact = () => {
 
   return (
     <Layout title="Contact" mx="auto" px={[ 2, 4 ]}>
-      <Box as="h3" mb={6} mt={8} style={{ fontWeight: 500 }}>
+      <Box as="h3" mb={6} mt={[ -2, 2 ]} style={{ fontWeight: 500 }}>
         Want to get in touch? Fill out the form below to send us a
         message and we will get back to you!
       </Box>
