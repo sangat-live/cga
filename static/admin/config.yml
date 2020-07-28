@@ -24,7 +24,7 @@ collections:
   - name: home-page-sections
     label: Home Page Sections
     files:
-      - file: src/content/whatWeDo.mdx
+      - file: src/content/whatWeDo.md
         label: What We Do
         name: what-we-do
         fields:
