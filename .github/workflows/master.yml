@@ -1,7 +1,8 @@
 name: Create Release for Master
 
 on:
-  push: [master]
+  push:
+    branches: [master]
 
 jobs:
     build:
@@ -17,13 +18,21 @@ jobs:
               env:
                 REPO: ${{ github.repository }}
 
+            - name: Extract tag name
+              id: tag
+              uses: actions/github-script@v2
+              with:
+                github-token: ${{ secrets.deploy_access_token }}
+                script: |
+                  return context.payload.ref.replace(/\/refs\/tags\//, '');
+
             - name: Create Release
               uses: actions/create-release@latest
               env:
                 GITHUB_TOKEN: ${{ secrets.deploy_access_token }}
               with:
-                tag_name: ${{ github.ref }}
-                release_name: Release ${{ github.ref }}
+                tag_name: ${{ steps.tag.outputs.result }}
+                release_name: ${{ steps.tag.outputs.result }}
                 body: |
                     ${{ steps.Changelog.outputs.changelog }}
                 draft: false
