@@ -1,0 +1,30 @@
+name: Create Release for Master
+
+on:
+  push: [master]
+
+jobs:
+    build:
+        name: Create Release
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Generate Changelog
+              uses: ScottBrenner/generate-changelog-action@1.0.0
+              id: Changelog
+              env:
+                REPO: ${{ github.repository }}
+
+            - name: Create Release
+              uses: actions/create-release@latest
+              env:
+                GITHUB_TOKEN: ${{ secrets.deploy_access_token }}
+              with:
+                tag_name: ${{ github.ref }}
+                release_name: Release ${{ github.ref }}
+                body: |
+                    ${{ steps.Changelog.outputs.changelog }}
+                draft: false
+                prerelease: false
