@@ -1,7 +1,10 @@
 {
   "name": "chandigarh-gatka-association-web",
-  "private": true,
-  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangat-live/cga"
+  },
+  "version": "1.0.0",
   "author": "Saihajpreet Singh <saihajpreet.singh@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
