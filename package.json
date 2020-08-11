@@ -1,7 +1,7 @@
 {
   "name": "chandigarh-gatka-association-web",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Saihajpreet Singh <saihajpreet.singh@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
