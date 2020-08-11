@@ -46,19 +46,15 @@ jobs:
 
       - name: Extract tag name
         id: tag
-        uses: actions/github-script@v2
-        with:
-          github-token: ${{ secrets.deploy_access_token }}
-          script: |
-            return context.payload.ref.replace(/\/refs\/tags\//, '');
+        uses: tyankatsu0105/read-package-version-actions@v1
 
       - name: Create Release
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.deploy_access_token }}
         with:
-          tag_name: ${{ steps.tag.outputs.result }}
-          release_name: ${{ steps.tag.outputs.result }}
+          tag_name: ${{ steps.tag.outputs.version }}
+          release_name: ${{ steps.tag.outputs.version }}
           body: |
               ${{ steps.Changelog.outputs.changelog }}
           draft: false
