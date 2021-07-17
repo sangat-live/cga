@@ -1,3 +1,7 @@
+# [1.2.0](https://github.com/sangat-live/cga/compare/v1.1.0...v1.2.0) (2021-07-17)
+
+
+
 ## [1.1.1](https://github.com/sangat-live/cga/compare/v1.1.0...v1.1.1) (2020-11-03)
 
 
