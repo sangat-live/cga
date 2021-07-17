@@ -1,6 +1,6 @@
 ---
 templateKey: news-layout
-title: SELECTION TRIALS FOR UT GATKA TEAM ON JULY 18
+title: Selection Trials for UT Gatka team on July 18
 date: 2021-07-17T22:50:53.350Z
 keywords: "National Trials, 2021 National Gatka Championship "
 ---
