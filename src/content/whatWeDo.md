@@ -1,9 +1,8 @@
 ---
 title: What we do
 ---
-
 Chandigarh Gatka Association (Regd.) is doing efforts to Promote Gatka as a
-Sports under the ageis of Gatka Federation of India (Regd.).
+Sports under the ageis of Nation Gatka Association of India (Regd.).
 This irony of fate that Gatka have been denied its due status and
 recognition but on the contrary several games, which even had not
 Indian origin and lesser known games, have already been included
